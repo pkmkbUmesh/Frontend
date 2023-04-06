@@ -35,7 +35,7 @@ const MembersDataProvider = ({ children }) => {
     } else {
       setMembersList(dummyData);
     }
-  }, [debounceSearchQuery]);
+  }, [debounceSearchQuery]);  //eslint-disable-line
 
   const value = { membersList, searchQuery, onSearchMember };
 
