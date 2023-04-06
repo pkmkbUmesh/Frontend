@@ -19,7 +19,7 @@ const MembersDataProvider = ({ children }) => {
   // useEffect will run when there is any search query is entered by the user
   useEffect(() => {
     if (debounceSearchQuery) {
-      const searchData = membersList.filter((item) => {
+      const searchData = membersList.filter((item) => { //eslint-disable-line
         const { memberName, designation } = item;
         const searchQueryToLowerCase = searchQuery.toLowerCase();
 
