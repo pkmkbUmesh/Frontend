@@ -1,0 +1,37 @@
+@import "./variables.scss";
+
+aside {
+  width: 20%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 75px 0 15px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  @include themify($themes) {
+    background: themed("sidebarBg");
+  }
+
+  @media (max-width: 768px) {
+    width: 25%;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    gap: 10px;
+    cursor: pointer;
+    color: $blue-text;
+  }
+
+  .active {
+    background: $member-logo-bg-light;
+    color: $white-text !important;
+    border-radius: 0px 8px 8px 0px;
+    margin-right: 16px;
+  }
+}

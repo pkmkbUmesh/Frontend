@@ -1,0 +1,51 @@
+//text colors
+$white-text: #ffffff;
+$blue-text: #1d4ed8;
+
+//background colors
+$member-logo-bg-light: #2563eb;
+
+//Dark theme setup
+$themes: (
+  light: (
+    memberCard: #eff6ff,
+    memberLogo: #2563eb,
+    appBg: #f3f4f6,
+    sidebarBg: #f9fafb,
+    text: #111827,
+    descriptionText: #6b7280,
+    searchBorder: #9ca3af,
+  ),
+  dark: (
+    memberCard: #1e3a8a,
+    memberLogo: #2563eb,
+    appBg: #1f2937,
+    sidebarBg: #111827,
+    text: #ffffff,
+    descriptionText: #d1d5db,
+    searchBorder: #6b7280,
+  ),
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
